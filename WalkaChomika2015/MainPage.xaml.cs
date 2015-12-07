@@ -55,10 +55,19 @@ namespace WalkaChomika
             this.InitializeComponent();
             Debug = new TextBoxTraceListener(debug);
 
+<<<<<<< d9866103c9c1a4d2bed4e8600534e42af900adca
             // tworzenie nowego obiektu i nadawanie jego cech poprzez konstruktor
             // domyślny lub z parametrami
             zwierze1 = new ChomikSzaman("Pucuś", 10);            
             zwierze2 = new Chomik("Lucjan");
+=======
+            // tworzenie nowego obiektu i nadawanie jego cech
+            zwierze1 = new ChomikSzaman("Pucuś", 10);
+
+            // można też utworzyć obiekt i nadawać mu cechy od razu
+            //zwierze2 = new Chomik("Lucjan");
+            zwierze2 = new Jednorożec("Rafał", 5);
+>>>>>>> Wersja ze spotkania 3
 
         }
 
@@ -72,13 +81,10 @@ namespace WalkaChomika
         /// czyli Zwierzęciem 1 i Zwierzęciem 2. Zwierzę 1 atakuje 2.
         /// </summary>        
         private void Tura()
-        {
-            Random r = new Random();
-            var d = r.NextDouble();
-
-
+        {           
             if (gracz1)
             {
+<<<<<<< d9866103c9c1a4d2bed4e8600534e42af900adca
                 // 20% szans na atak magiczny
                 if (d > 0.8)
                 {
@@ -89,18 +95,13 @@ namespace WalkaChomika
                     }
                 }
                 zwierze1.Gryź(zwierze2);
+=======
+                Atak(zwierze1, zwierze2);
+>>>>>>> Wersja ze spotkania 3
             }
             else
             {
-                if (d > 0.8)
-                {
-                    if (zwierze2 is ZwierzęMagiczne)
-                    {
-                        ((ZwierzęMagiczne)zwierze2).AtakujMagicznie(zwierze1);
-                        Debug.WriteLine(zwierze2.Imię + " zaatakował magią!");
-                    }
-                }
-                zwierze2.Gryź(zwierze1);
+                Atak(zwierze2, zwierze1);
             }
 
             if (!zwierze1.CzyŻyje())
@@ -119,6 +120,33 @@ namespace WalkaChomika
             Debug.WriteLine(zwierze2.Stan());
 
             gracz1 = !gracz1;
+        }
+
+        private void Atak(Zwierzę atakujący, Zwierzę cel)
+        {
+            Random r = new Random();
+            var d = r.NextDouble();
+
+            bool czyAtakował = false;
+            if ((atakujący is ZwierzęMagiczne) && (d > 0.8))
+            {
+                (atakujący as ZwierzęMagiczne).AtakujMagicznie(cel);
+                Debug.WriteLine(atakujący.Imię + " zaatakował magią!");
+                czyAtakował = true;
+            }
+
+            if ((atakujący is ILatający) && (d > 0.6))
+            {
+                if (!(atakujący as ILatający).CzyLata)
+                {
+                    (atakujący as ILatający).Lataj();
+                    Debug.WriteLine(atakujący.Imię + " odleciał!");
+                    czyAtakował = true;
+                }
+            }
+
+            if (!czyAtakował)
+                atakujący.Gryź(cel);
         }
 
         /// <summary>

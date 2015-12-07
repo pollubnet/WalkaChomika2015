@@ -31,7 +31,12 @@ namespace WalkaChomika
             this.HP = 1;
             this.Mana = 0;
             this.Damage = 2;
+            this.Agility = 0;
+
+            Licznik = Licznik + 1;
         }
+
+        public static int Licznik = 0;
 
         /// <summary>
         /// To jest tzw. właściwość. Powinno używać się właściwości zamiast pól, ale dlaczego, to już
@@ -54,6 +59,8 @@ namespace WalkaChomika
         /// To pole reprezentuje maksymalne obrażenia zadawane przez atak
         /// </summary>
         public int Damage;
+
+        public int Agility { get; set; }
 
         /// <summary>
         /// Ta funkcja zwraca, czy zwierze jeszcze żyje, opierając się na danych z tego samego obiektu.
@@ -79,8 +86,9 @@ namespace WalkaChomika
             // losuje liczbę z zakresu od 0 do maksymalnego ataku obecnego obiektu
             var moc = r.Next(this.Damage);
 
-            // zwierzęciu przekazanemu jako parametr odejmuje od punktów HP tyle, ile wyniosła moc ataku
-            z.HP = z.HP - moc;
+            
+            if (r.NextDouble() * 10 > z.Agility)
+                z.HP = z.HP - moc;
         }
 
         /// <summary>

@@ -37,6 +37,7 @@ namespace WalkaChomika
             this.HP = 100000;
             this.Damage = 150;
             this.Imię = imię;
+            this.Agility = 2;
         }
     }
 }

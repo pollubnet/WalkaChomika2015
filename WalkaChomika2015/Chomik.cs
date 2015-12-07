@@ -39,6 +39,7 @@ namespace WalkaChomika
             this.HP = 5;
             this.Mana = 0;
             this.Damage = 2;
+            this.Agility = 7;
         }
     }
 }

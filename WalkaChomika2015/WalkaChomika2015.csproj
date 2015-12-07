@@ -99,6 +99,8 @@
     <Compile Include="Chomik.cs" />
     <Compile Include="ChomikSzaman.cs" />
     <Compile Include="Dinozaur.cs" />
+    <Compile Include="ILatający.cs" />
+    <Compile Include="Jednorożec.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
