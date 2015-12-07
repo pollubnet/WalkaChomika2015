@@ -13,6 +13,7 @@
  */
 #endregion
 
+using Ktos.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,12 +38,14 @@ namespace WalkaChomika
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private TextBoxTraceListener Debug;
+
         /// <summary>
         /// Prywatne pola, które będą wspólne dla wszystkich funkcji (metod)
         /// w klasie odpowiedzialnej za wyświetlanie tego okna
         /// </summary>
-        private Zwierzę chomik;
-        private Zwierzę pies;
+        private Zwierzę zwierze1;
+        private Zwierzę zwierze2;
 
         /// <summary>
         /// Konstruktor, uruchamia się przy tworzeniu okna
@@ -50,44 +53,69 @@ namespace WalkaChomika
         public MainPage()
         {
             this.InitializeComponent();
+            Debug = new TextBoxTraceListener(debug);
 
             // tworzenie nowego obiektu i nadawanie jego cech
-            chomik = new Zwierzę();
-            chomik.HP = 5;
-            chomik.Imię = "Pucuś";
-            chomik.Mana = 0;
-            chomik.Damage = 2;
+            zwierze1 = new ChomikSzaman("Pucuś", 10);
 
             // można też utworzyć obiekt i nadawać mu cechy od razu
-            pies = new Zwierzę()
-            {
-                Imię = "Dino",
-                Damage = 5,
-                Mana = 0,
-                HP = 20
-            };
+            zwierze2 = new Chomik("Lucjan");
 
         }
+
+        private bool gracz1 = true;
 
         /// <summary>
         /// Funkcja realizująca walkę pomiędzy zmiennymi przekazywanymi w parametrach
         /// czyli Zwierzęciem 1 i Zwierzęciem 2. Zwierzę 1 atakuje 2.
-        /// </summary>
-        /// <param name="zwierze1"></param>
-        /// <param name="zwierze2"></param>
-        private void Walka(Zwierzę zwierze1, Zwierzę zwierze2)
+        /// </summary>        
+        private void Tura()
         {
-            int z = 0;
+            Random r = new Random();
+            var d = r.NextDouble();
 
 
-            while (zwierze2.CzyŻyje())
+            if (gracz1)
             {
+                if (d > 0.8)
+                {
+                    if (zwierze1 is ZwierzęMagiczne)
+                    {
+                        (zwierze1 as ZwierzęMagiczne).AtakujMagicznie(zwierze2);
+                        Debug.WriteLine(zwierze1.Imię + " zaatakował magią!");
+                    }
+                }
                 zwierze1.Gryź(zwierze2);
-                z++;
+            }
+            else
+            {
+                if (d > 0.8)
+                {
+                    if (zwierze2 is ZwierzęMagiczne)
+                    {
+                        ((ZwierzęMagiczne)zwierze2).AtakujMagicznie(zwierze1);
+                        Debug.WriteLine(zwierze2.Imię + " zaatakował magią!");
+                    }
+                }
+                zwierze2.Gryź(zwierze1);
             }
 
-            // ustawiamy tekst w polu tekstowym
-            liczbaUgryzien.Text = z.ToString();
+            if (!zwierze1.CzyŻyje())
+            {
+                Debug.WriteLine(zwierze1.Imię + " nie żyje :(");
+                btnNextTurn.IsEnabled = false;
+            }
+
+            if (!zwierze2.CzyŻyje())
+            {
+                Debug.WriteLine(zwierze2.Imię + " nie żyje :(");
+                btnNextTurn.IsEnabled = false;
+            }
+
+            Debug.WriteLine(zwierze1.Stan());
+            Debug.WriteLine(zwierze2.Stan());
+
+            gracz1 = !gracz1;
         }
 
         /// <summary>
@@ -98,7 +126,12 @@ namespace WalkaChomika
         private void button_Click(object sender, RoutedEventArgs e)
         {
             // uruchomienie walki pomiędzy zwierzątkami utworzonymi w konstruktorze
-            Walka(chomik, pies);
+            Tura();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            (zwierze1 as object).ToString();
         }
     }
 }

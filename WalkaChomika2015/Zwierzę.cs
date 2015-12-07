@@ -24,8 +24,15 @@ namespace WalkaChomika
     /// <summary>
     /// Klasa Zwierzę, reprezentująca zwierzę bojowe
     /// </summary>
-    class Zwierzę
+    abstract class Zwierzę
     {
+        public Zwierzę()
+        {
+            this.HP = 1;
+            this.Mana = 0;
+            this.Damage = 2;
+        }
+
         /// <summary>
         /// To jest tzw. właściwość. Powinno używać się właściwości zamiast pól, ale dlaczego, to już
         /// kwestia nieco bardziej zaawansowana, więc chwilowo ją pominiemy. To konkretne pole reprezentuje
@@ -74,6 +81,16 @@ namespace WalkaChomika
 
             // zwierzęciu przekazanemu jako parametr odejmuje od punktów HP tyle, ile wyniosła moc ataku
             z.HP = z.HP - moc;
+        }
+
+        public virtual string Stan()
+        {            
+            return string.Format("{0} HP: {1}", this.Imię, this.HP);
+        }
+
+        public override string ToString()
+        {
+            return this.Imię;
         }
     }
 }

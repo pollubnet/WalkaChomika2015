@@ -8,7 +8,17 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="liczbaUgryzien" HorizontalAlignment="Center" Text="Liczba ugryzień" Margin="50,50,50,50" />
-        <Button Click="button_Click" x:Name="button" Content="Walka!" HorizontalAlignment="Center" />
+
+        <StackPanel>
+            <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Visible" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="200">
+                <TextBox x:Name="debug" IsReadOnly="True" AcceptsReturn="True" />
+            </ScrollViewer>
+
+            <Button Click="button_Click" x:Name="btnNextTurn" Content="Następna tura!" HorizontalAlignment="Center" />
+            <Button Click="Button_Click_1" Content="Test" />
+
+        </StackPanel>
+        
+        
     </Grid>
 </Page>
