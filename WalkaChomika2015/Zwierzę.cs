@@ -1,30 +1,28 @@
 ﻿#region License
+
 /*
  * Written in 2015 by Marcin Badurowicz <m dot badurowicz at pollub dot pl>
  *
  * To the extent possible under law, the author(s) have dedicated
- * all copyright and related and neighboring rights to this 
- * software to the public domain worldwide. This software is 
- * distributed without any warranty. 
+ * all copyright and related and neighboring rights to this
+ * software to the public domain worldwide. This software is
+ * distributed without any warranty.
  *
- * You should have received a copy of the CC0 Public Domain 
- * Dedication along with this software. If not, see 
- * <http://creativecommons.org/publicdomain/zero/1.0/>. 
+ * You should have received a copy of the CC0 Public Domain
+ * Dedication along with this software. If not, see
+ * <http://creativecommons.org/publicdomain/zero/1.0/>.
  */
-#endregion
+
+#endregion License
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WalkaChomika
-{ 
+{
     /// <summary>
     /// Klasa Zwierzę, reprezentująca zwierzę bojowe
     /// </summary>
-    abstract class Zwierzę
+    internal abstract class Zwierzę
     {
         public Zwierzę()
         {
@@ -102,7 +100,7 @@ namespace WalkaChomika
         /// </summary>
         /// <returns>Łańcuch opisujący stan gracza</returns>
         public virtual string Stan()
-        {            
+        {
             return string.Format("{0} HP: {1}", this.Imię, this.HP);
         }
 

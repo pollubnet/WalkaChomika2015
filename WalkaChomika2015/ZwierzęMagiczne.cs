@@ -1,31 +1,28 @@
 ﻿#region License
+
 /*
  * Written in 2014 by Marcin Badurowicz <m dot badurowicz at pollub dot pl>
  *
  * To the extent possible under law, the author(s) have dedicated
- * all copyright and related and neighboring rights to this 
- * software to the public domain worldwide. This software is 
- * distributed without any warranty. 
+ * all copyright and related and neighboring rights to this
+ * software to the public domain worldwide. This software is
+ * distributed without any warranty.
  *
- * You should have received a copy of the CC0 Public Domain 
- * Dedication along with this software. If not, see 
- * <http://creativecommons.org/publicdomain/zero/1.0/>. 
+ * You should have received a copy of the CC0 Public Domain
+ * Dedication along with this software. If not, see
+ * <http://creativecommons.org/publicdomain/zero/1.0/>.
  */
-#endregion
 
+#endregion License
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WalkaChomika
 {
     /// <summary>
     /// Klasa ZwierzęMagiczne dziedziczy po klasie Zwierzę
     /// </summary>
-    class ZwierzęMagiczne : Zwierzę
+    internal class ZwierzęMagiczne : Zwierzę
     {
         /// <summary>
         /// Konstruktor, który ustawia wartości podstawowe
@@ -47,7 +44,7 @@ namespace WalkaChomika
             this.Imię = imię;
             this.Mana = mana;
         }
-        
+
         /// <summary>
         /// Funkcja ataku magicznego, jest prawie analogiczna do funkcji
         /// Gryzienia, ale ma o wiele większą moc
