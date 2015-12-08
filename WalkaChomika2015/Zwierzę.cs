@@ -83,11 +83,21 @@ namespace WalkaChomika
             z.HP = z.HP - moc;
         }
 
+        /// <summary>
+        /// Zwraca stan gracza (imię i ilość HP) i można ją przeładować w klasach pochodnych,
+        /// bo jest wirtualna, więc klasy pochodne mogą stan zwracać nieco inaczej
+        /// </summary>
+        /// <returns>Łańcuch opisujący stan gracza</returns>
         public virtual string Stan()
         {            
             return string.Format("{0} HP: {1}", this.Imię, this.HP);
         }
 
+        /// <summary>
+        /// Nadpisanie metody ToString() z klasy System.Object, żeby zamiast
+        /// standardowego tekstu pokazywało imię zwierzątka
+        /// </summary>
+        /// <returns>Imię zwierzęcia</returns>
         public override string ToString()
         {
             return this.Imię;

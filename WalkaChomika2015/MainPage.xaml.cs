@@ -55,14 +55,16 @@ namespace WalkaChomika
             this.InitializeComponent();
             Debug = new TextBoxTraceListener(debug);
 
-            // tworzenie nowego obiektu i nadawanie jego cech
-            zwierze1 = new ChomikSzaman("Pucuś", 10);
-
-            // można też utworzyć obiekt i nadawać mu cechy od razu
+            // tworzenie nowego obiektu i nadawanie jego cech poprzez konstruktor
+            // domyślny lub z parametrami
+            zwierze1 = new ChomikSzaman("Pucuś", 10);            
             zwierze2 = new Chomik("Lucjan");
 
         }
 
+        /// <summary>
+        /// Pole które określa czy jest tura gracza1 czy też nie
+        /// </summary>
         private bool gracz1 = true;
 
         /// <summary>
@@ -77,6 +79,7 @@ namespace WalkaChomika
 
             if (gracz1)
             {
+                // 20% szans na atak magiczny
                 if (d > 0.8)
                 {
                     if (zwierze1 is ZwierzęMagiczne)
@@ -131,6 +134,7 @@ namespace WalkaChomika
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            // wszystko można zrzutować na System.Object, jeżeli ktoś potrzebuje
             (zwierze1 as object).ToString();
         }
     }

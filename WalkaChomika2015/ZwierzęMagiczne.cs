@@ -1,4 +1,20 @@
-﻿using System;
+﻿#region License
+/*
+ * Written in 2014 by Marcin Badurowicz <m dot badurowicz at pollub dot pl>
+ *
+ * To the extent possible under law, the author(s) have dedicated
+ * all copyright and related and neighboring rights to this 
+ * software to the public domain worldwide. This software is 
+ * distributed without any warranty. 
+ *
+ * You should have received a copy of the CC0 Public Domain 
+ * Dedication along with this software. If not, see 
+ * <http://creativecommons.org/publicdomain/zero/1.0/>. 
+ */
+#endregion
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,6 +68,10 @@ namespace WalkaChomika
             }
         }
 
+        /// <summary>
+        /// Nadpisana w stosunku do klasy Zwierzę funkcja Stan, wyświetlająca w inny sposób
+        /// </summary>
+        /// <returns>Zwraca imię, HP oraz manę zwierzęcia magicznego</returns>
         public override string Stan()
         {
             return string.Format("{0} HP: {1}, Mana: {2}", this.Imię, this.HP, this.Mana);
