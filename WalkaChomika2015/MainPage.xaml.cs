@@ -55,20 +55,10 @@ namespace WalkaChomika
             this.InitializeComponent();
             Debug = new TextBoxTraceListener(debug);
 
-<<<<<<< d9866103c9c1a4d2bed4e8600534e42af900adca
             // tworzenie nowego obiektu i nadawanie jego cech poprzez konstruktor
             // domyślny lub z parametrami
             zwierze1 = new ChomikSzaman("Pucuś", 10);            
-            zwierze2 = new Chomik("Lucjan");
-=======
-            // tworzenie nowego obiektu i nadawanie jego cech
-            zwierze1 = new ChomikSzaman("Pucuś", 10);
-
-            // można też utworzyć obiekt i nadawać mu cechy od razu
-            //zwierze2 = new Chomik("Lucjan");
             zwierze2 = new Jednorożec("Rafał", 5);
->>>>>>> Wersja ze spotkania 3
-
         }
 
         /// <summary>
@@ -84,20 +74,7 @@ namespace WalkaChomika
         {           
             if (gracz1)
             {
-<<<<<<< d9866103c9c1a4d2bed4e8600534e42af900adca
-                // 20% szans na atak magiczny
-                if (d > 0.8)
-                {
-                    if (zwierze1 is ZwierzęMagiczne)
-                    {
-                        (zwierze1 as ZwierzęMagiczne).AtakujMagicznie(zwierze2);
-                        Debug.WriteLine(zwierze1.Imię + " zaatakował magią!");
-                    }
-                }
-                zwierze1.Gryź(zwierze2);
-=======
                 Atak(zwierze1, zwierze2);
->>>>>>> Wersja ze spotkania 3
             }
             else
             {
@@ -122,12 +99,20 @@ namespace WalkaChomika
             gracz1 = !gracz1;
         }
 
+        /// <summary>
+        /// Funkcja realizująca atak jednego gracza na drugiego
+        /// </summary>
+        /// <param name="atakujący">Obiekt który jest atakujący</param>
+        /// <param name="cel">Obiekt który jest atakowany</param>
         private void Atak(Zwierzę atakujący, Zwierzę cel)
         {
             Random r = new Random();
             var d = r.NextDouble();
 
+            // mówi czy atak nastąpił, czy mamy testować dalej
             bool czyAtakował = false;
+
+            // dla Zwierzęcia Magicznego 20% szans ataku magicznego
             if ((atakujący is ZwierzęMagiczne) && (d > 0.8))
             {
                 (atakujący as ZwierzęMagiczne).AtakujMagicznie(cel);
@@ -135,7 +120,10 @@ namespace WalkaChomika
                 czyAtakował = true;
             }
 
-            if ((atakujący is ILatający) && (d > 0.6))
+            // jeżeli nie udało się, a atakujący lata, to może zużyć swój ruch
+            // na start do lotu z 40% szans na powodzenie - start też jest uznawany
+            // za atak, mimo, że nie zadaje obrażeń
+            if (!czyAtakował && (atakujący is ILatający) && (d > 0.6))
             {
                 if (!(atakujący as ILatający).CzyLata)
                 {
@@ -145,6 +133,7 @@ namespace WalkaChomika
                 }
             }
 
+            // jeśli nie zaatakował w żaden specjalny sposób, gryzie
             if (!czyAtakował)
                 atakujący.Gryź(cel);
         }
@@ -158,6 +147,7 @@ namespace WalkaChomika
         {
             // uruchomienie walki pomiędzy zwierzątkami utworzonymi w konstruktorze
             Tura();
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
