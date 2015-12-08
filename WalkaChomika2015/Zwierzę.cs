@@ -60,6 +60,10 @@ namespace WalkaChomika
         /// </summary>
         public int Damage;
 
+        /// <summary>
+        /// Nowa cecha dla zwierzęcia - zwinność, która pozwala unikać
+        /// mu zagrożeń
+        /// </summary>
         public int Agility { get; set; }
 
         /// <summary>
@@ -86,7 +90,8 @@ namespace WalkaChomika
             // losuje liczbę z zakresu od 0 do maksymalnego ataku obecnego obiektu
             var moc = r.Next(this.Damage);
 
-            
+            // gryzienie powodzi się tylko w sytuacji, kiedy uda nam się wylosować liczbę
+            // powyżej wartości zwinności celu
             if (r.NextDouble() * 10 > z.Agility)
                 z.HP = z.HP - moc;
         }
