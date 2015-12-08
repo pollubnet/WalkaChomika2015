@@ -1,35 +1,24 @@
 ﻿#region License
+
 /*
  * Written in 2014 by Marcin Badurowicz <m dot badurowicz at pollub dot pl>
  *
  * To the extent possible under law, the author(s) have dedicated
- * all copyright and related and neighboring rights to this 
- * software to the public domain worldwide. This software is 
- * distributed without any warranty. 
+ * all copyright and related and neighboring rights to this
+ * software to the public domain worldwide. This software is
+ * distributed without any warranty.
  *
- * You should have received a copy of the CC0 Public Domain 
- * Dedication along with this software. If not, see 
- * <http://creativecommons.org/publicdomain/zero/1.0/>. 
+ * You should have received a copy of the CC0 Public Domain
+ * Dedication along with this software. If not, see
+ * <http://creativecommons.org/publicdomain/zero/1.0/>.
  */
-#endregion
+
+#endregion License
 
 using Ktos.Common;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace WalkaChomika
 {
@@ -45,6 +34,7 @@ namespace WalkaChomika
         /// w klasie odpowiedzialnej za wyświetlanie tego okna
         /// </summary>
         private Zwierzę zwierze1;
+
         private Zwierzę zwierze2;
 
         /// <summary>
@@ -57,7 +47,7 @@ namespace WalkaChomika
 
             // tworzenie nowego obiektu i nadawanie jego cech poprzez konstruktor
             // domyślny lub z parametrami
-            zwierze1 = new ChomikSzaman("Pucuś", 10);            
+            zwierze1 = new ChomikSzaman("Pucuś", 10);
             zwierze2 = new Jednorożec("Rafał", 5);
         }
 
@@ -69,9 +59,9 @@ namespace WalkaChomika
         /// <summary>
         /// Funkcja realizująca walkę pomiędzy zmiennymi przekazywanymi w parametrach
         /// czyli Zwierzęciem 1 i Zwierzęciem 2. Zwierzę 1 atakuje 2.
-        /// </summary>        
+        /// </summary>
         private void Tura()
-        {           
+        {
             if (gracz1)
             {
                 Atak(zwierze1, zwierze2);
@@ -147,7 +137,6 @@ namespace WalkaChomika
         {
             // uruchomienie walki pomiędzy zwierzątkami utworzonymi w konstruktorze
             Tura();
-            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

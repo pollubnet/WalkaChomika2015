@@ -1,23 +1,19 @@
 ﻿#region License
+
 /*
  * Written in 2014 by Marcin Badurowicz <m dot badurowicz at pollub dot pl>
  *
  * To the extent possible under law, the author(s) have dedicated
- * all copyright and related and neighboring rights to this 
- * software to the public domain worldwide. This software is 
- * distributed without any warranty. 
+ * all copyright and related and neighboring rights to this
+ * software to the public domain worldwide. This software is
+ * distributed without any warranty.
  *
- * You should have received a copy of the CC0 Public Domain 
- * Dedication along with this software. If not, see 
- * <http://creativecommons.org/publicdomain/zero/1.0/>. 
+ * You should have received a copy of the CC0 Public Domain
+ * Dedication along with this software. If not, see
+ * <http://creativecommons.org/publicdomain/zero/1.0/>.
  */
-#endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+#endregion License
 
 namespace WalkaChomika
 {
@@ -25,13 +21,13 @@ namespace WalkaChomika
     /// Jednorożec - zwierzę magiczne od razu implementujące interfejs ILatający,
     /// czyli latające
     /// </summary>
-    class Jednorożec : ZwierzęMagiczne, ILatający
+    internal class Jednorożec : ZwierzęMagiczne, ILatający
     {
         /// <summary>
         /// Konstuktor wypełniający domyślnymi wartościami
         /// </summary>
-        /// <param name="imię"></param>
-        /// <param name="mana"></param>
+        /// <param name="imię">Imię jednorożca</param>
+        /// <param name="mana">Początkowa ilość many</param>
         public Jednorożec(string imię, int mana)
         {
             this.Imię = imię;
@@ -57,7 +53,6 @@ namespace WalkaChomika
                 this.Agility = 7;
                 this.Mana--;
             }
-            
         }
     }
 }

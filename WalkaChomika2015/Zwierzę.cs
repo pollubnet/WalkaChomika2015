@@ -24,6 +24,9 @@ namespace WalkaChomika
     /// </summary>
     internal abstract class Zwierzę
     {
+        /// <summary>
+        /// Konstruktor klasy zwierzę, nadający bazowe wartości jej parametrów
+        /// </summary>
         public Zwierzę()
         {
             this.HP = 1;
@@ -34,6 +37,10 @@ namespace WalkaChomika
             Licznik = Licznik + 1;
         }
 
+        /// <summary>
+        /// Pole statyczne, wspólne dla wszystkich obiektów klasy Zwierzę i pochodnych
+        /// zwiększane za każdym utworzonym zwierzęciem
+        /// </summary>
         public static int Licznik = 0;
 
         /// <summary>
@@ -85,6 +92,7 @@ namespace WalkaChomika
         {
             // tworzenie generatora liczb losowych
             Random r = new Random();
+
             // losuje liczbę z zakresu od 0 do maksymalnego ataku obecnego obiektu
             var moc = r.Next(this.Damage);
 

@@ -15,10 +15,6 @@
             </ScrollViewer>
 
             <Button Click="button_Click" x:Name="btnNextTurn" Content="Następna tura!" HorizontalAlignment="Center" />
-            <Button Click="Button_Click_1" Content="Test" />
-
         </StackPanel>
-        
-        
     </Grid>
 </Page>

@@ -49,13 +49,14 @@ namespace WalkaChomika
         /// Funkcja ataku magicznego, jest prawie analogiczna do funkcji
         /// Gryzienia, ale ma o wiele większą moc
         /// </summary>
-        /// <param name="z"></param>
+        /// <param name="z">Cel ataku magicznego</param>
         public void AtakujMagicznie(Zwierzę z)
         {
             if (this.Mana > 0)
             {
                 // tworzenie generatora liczb losowych
                 Random r = new Random();
+
                 // losuje liczbę z zakresu od 0 do maksymalnego ataku obecnego obiektu
                 var moc = r.Next(this.Damage * 100);
                 this.Mana = this.Mana - 1;
