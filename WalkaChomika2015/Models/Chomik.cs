@@ -15,7 +15,7 @@
 
 #endregion License
 
-namespace WalkaChomika
+namespace WalkaChomika.Models
 {
     /// <summary>
     /// Klasa Chomik, dziedzicząca po Zwierzę

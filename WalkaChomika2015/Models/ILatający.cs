@@ -15,7 +15,7 @@
 
 #endregion License
 
-namespace WalkaChomika
+namespace WalkaChomika.Models
 {
     /// <summary>
     /// Interfejs opisujący wszystkie cechy i funkcje zwierząt latających

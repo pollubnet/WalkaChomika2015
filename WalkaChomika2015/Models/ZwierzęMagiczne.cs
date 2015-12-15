@@ -17,7 +17,7 @@
 
 using System;
 
-namespace WalkaChomika
+namespace WalkaChomika.Models
 {
     /// <summary>
     /// Klasa ZwierzęMagiczne dziedziczy po klasie Zwierzę

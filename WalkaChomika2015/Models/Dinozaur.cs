@@ -15,7 +15,7 @@
 
 #endregion License
 
-namespace WalkaChomika
+namespace WalkaChomika.Models
 {
     /// <summary>
     /// Dinozaur, klasa dziedzicząca po Zwierzę

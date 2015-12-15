@@ -15,7 +15,7 @@
 
 #endregion License
 
-namespace WalkaChomika
+namespace WalkaChomika.Models
 {
     /// <summary>
     /// Jednorożec - zwierzę magiczne od razu implementujące interfejs ILatający,
