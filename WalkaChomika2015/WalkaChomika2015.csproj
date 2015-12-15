@@ -96,18 +96,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Chomik.cs" />
-    <Compile Include="ChomikSzaman.cs" />
-    <Compile Include="Dinozaur.cs" />
-    <Compile Include="ILatający.cs" />
-    <Compile Include="Jednorożec.cs" />
+    <Compile Include="Models\ArmiaChomików.cs" />
+    <Compile Include="Models\Chomik.cs" />
+    <Compile Include="Models\ChomikSzaman.cs" />
+    <Compile Include="Models\Dinozaur.cs" />
+    <Compile Include="Models\ILatający.cs" />
+    <Compile Include="Models\Jednorożec.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextBoxTraceListener.cs" />
-    <Compile Include="Zwierzę.cs" />
-    <Compile Include="ZwierzęMagiczne.cs" />
+    <Compile Include="Models\Zwierzę.cs" />
+    <Compile Include="Models\ZwierzęMagiczne.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

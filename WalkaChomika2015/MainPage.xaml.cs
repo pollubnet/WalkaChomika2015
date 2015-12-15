@@ -17,6 +17,7 @@
 
 using Ktos.Common;
 using System;
+using WalkaChomika.Models;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -47,7 +48,7 @@ namespace WalkaChomika
 
             // tworzenie nowego obiektu i nadawanie jego cech poprzez konstruktor
             // domyślny lub z parametrami
-            zwierze1 = new ChomikSzaman("Pucuś", 10);
+            zwierze1 = new ArmiaChomików(100);
             zwierze2 = new Jednorożec("Rafał", 5);
         }
 
@@ -143,6 +144,12 @@ namespace WalkaChomika
         {
             // wszystko można zrzutować na System.Object, jeżeli ktoś potrzebuje
             (zwierze1 as object).ToString();
+        }
+
+        private void btnAutoFight_Click(object sender, RoutedEventArgs e)
+        {
+            while (btnNextTurn.IsEnabled)
+                Tura();
         }
     }
 }

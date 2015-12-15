@@ -53,7 +53,7 @@ namespace WalkaChomika
         /// <summary>
         /// To pole jest liczbą, która reprezentuje ile zwierzę ma punktów życia
         /// </summary>
-        public int HP;
+        public virtual int HP { get; set; }
 
         /// <summary>
         /// To pole reprezentuje ilość many zwierzęcia
@@ -76,7 +76,7 @@ namespace WalkaChomika
         /// Funkcje w klasach nazywa się metodami.
         /// </summary>
         /// <returns>Zwraca, czy zwierzę jeszcze żyje</returns>
-        public bool CzyŻyje()
+        public virtual bool CzyŻyje()
         {
             if (HP > 0)
                 return true;
@@ -88,7 +88,7 @@ namespace WalkaChomika
         /// Ta funkcja atakuje inne zwierzę - podawane jest jako parametr wykonania tej funkcji.
         /// </summary>
         /// <param name="z">Zwierzę do zaatakowania</param>
-        public void Gryź(Zwierzę z)
+        public virtual void Gryź(Zwierzę z)
         {
             // tworzenie generatora liczb losowych
             Random r = new Random();

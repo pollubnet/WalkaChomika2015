@@ -15,6 +15,7 @@
             </ScrollViewer>
 
             <Button Click="button_Click" x:Name="btnNextTurn" Content="Następna tura!" HorizontalAlignment="Center" />
+            <Button Click="btnAutoFight_Click" x:Name="btnAutoFight" Content="Autowalka!" HorizontalAlignment="Center" />
         </StackPanel>
     </Grid>
 </Page>
