@@ -39,6 +39,9 @@ namespace WalkaChomika.Models
         /// <param name="liczba"></param>
         public ArmiaChomików(int liczba)
         {
+            if (liczba <= 0)
+                throw new ArgumentOutOfRangeException("liczba", "Armia musi mieć żołnierzy!");
+
             // tworzenie listy
             armia = new List<Chomik>();
 

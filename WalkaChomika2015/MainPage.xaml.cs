@@ -18,6 +18,7 @@
 using Ktos.Common;
 using System;
 using WalkaChomika.Models;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -48,7 +49,15 @@ namespace WalkaChomika
 
             // tworzenie nowego obiektu i nadawanie jego cech poprzez konstruktor
             // domyślny lub z parametrami
-            zwierze1 = new ArmiaChomików(100);
+            //try
+            //{
+                zwierze1 = new ArmiaChomików(100);
+            //}
+            //catch (ArgumentOutOfRangeException ex)
+            //{
+            //    MessageDialog m = new MessageDialog("błąd, wyjątek! " + ex.Message);
+            //    m.ShowAsync();
+            //}
             zwierze2 = new Jednorożec("Rafał", 5);
         }
 
@@ -106,9 +115,17 @@ namespace WalkaChomika
             // dla Zwierzęcia Magicznego 20% szans ataku magicznego
             if ((atakujący is ZwierzęMagiczne) && (d > 0.8))
             {
-                (atakujący as ZwierzęMagiczne).AtakujMagicznie(cel);
-                Debug.WriteLine(atakujący.Imię + " zaatakował magią!");
-                czyAtakował = true;
+                try
+                {
+                    (atakujący as ZwierzęMagiczne).AtakujMagicznie(cel);
+
+                    Debug.WriteLine(atakujący.Imię + " zaatakował magią!");
+                    czyAtakował = true;
+                }
+                catch (NoManaException)
+                {
+                    Debug.WriteLine("Nie ma już many!");
+                }
             }
 
             // jeżeli nie udało się, a atakujący lata, to może zużyć swój ruch
