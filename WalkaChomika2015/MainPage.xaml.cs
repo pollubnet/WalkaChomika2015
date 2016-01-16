@@ -48,16 +48,18 @@ namespace WalkaChomika
             Debug = new TextBoxTraceListener(debug);
 
             // tworzenie nowego obiektu i nadawanie jego cech poprzez konstruktor
-            // domyślny lub z parametrami
-            //try
-            //{
+            // domyślny lub z parametrami. konstruktor może rzucić ArgumentOutOfRangeException
+            // i z tego powodu obejmujemy to w blok try..catch i pokazujemy komunikat
+            // w razie wyjątku
+            try
+            {
                 zwierze1 = new ArmiaChomików(100);
-            //}
-            //catch (ArgumentOutOfRangeException ex)
-            //{
-            //    MessageDialog m = new MessageDialog("błąd, wyjątek! " + ex.Message);
-            //    m.ShowAsync();
-            //}
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageDialog m = new MessageDialog("błąd, wyjątek! " + ex.Message);
+                m.ShowAsync();
+            }
             zwierze2 = new Jednorożec("Rafał", 5);
         }
 
@@ -115,6 +117,7 @@ namespace WalkaChomika
             // dla Zwierzęcia Magicznego 20% szans ataku magicznego
             if ((atakujący is ZwierzęMagiczne) && (d > 0.8))
             {
+                // spróbuj zaatakować magicznie
                 try
                 {
                     (atakujący as ZwierzęMagiczne).AtakujMagicznie(cel);
@@ -122,6 +125,8 @@ namespace WalkaChomika
                     Debug.WriteLine(atakujący.Imię + " zaatakował magią!");
                     czyAtakował = true;
                 }
+                // jeżeli wystąpi wyjątek NoManaException, przechwyć go
+                // i pokaż w liście zdarzeń odpowiedni komunikat
                 catch (NoManaException)
                 {
                     Debug.WriteLine("Nie ma już many!");

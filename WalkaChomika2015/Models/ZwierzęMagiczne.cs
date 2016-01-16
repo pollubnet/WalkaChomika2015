@@ -66,6 +66,8 @@ namespace WalkaChomika.Models
                 z.HP = z.HP - moc;
             }
             else
+                // w sytuacji, gdy próbuje się wywołać tę metodę, ale mana wynosi
+                // 0, rzucany jest wyjątek NoManaException
                 throw new NoManaException();
         }
 
