@@ -50,6 +50,7 @@ namespace WalkaChomika.Models
         /// Gryzienia, ale ma o wiele większą moc
         /// </summary>
         /// <param name="z">Cel ataku magicznego</param>
+        /// <exception cref="NoManaException">Rzucane jeśli nie ma many</exception>
         public void AtakujMagicznie(Zwierzę z)
         {
             if (this.Mana > 0)
@@ -64,6 +65,10 @@ namespace WalkaChomika.Models
                 // zwierzęciu przekazanemu jako parametr odejmuje od punktów HP tyle, ile wyniosła moc ataku
                 z.HP = z.HP - moc;
             }
+            else
+                // w sytuacji, gdy próbuje się wywołać tę metodę, ale mana wynosi
+                // 0, rzucany jest wyjątek NoManaException
+                throw new NoManaException();
         }
 
         /// <summary>
