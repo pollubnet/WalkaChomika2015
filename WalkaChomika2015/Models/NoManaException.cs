@@ -22,7 +22,7 @@ namespace WalkaChomika.Models
     /// <summary>
     /// Klasa wyjątku NoManaException rzucanego, jeżeli próbujemy wykonać akcję,
     /// a nie ma many.
-    /// 
+    ///
     /// Wszystkie klasy wyjątków dziedziczą po System.Exception
     /// </summary>
     internal class NoManaException : Exception
@@ -45,7 +45,7 @@ namespace WalkaChomika.Models
 
         /// <summary>
         /// Konstruktor przyjmujący komunikat oraz wewnętrzny wyjątek.
-        /// 
+        ///
         /// Pozwala na opakowanie jednego wyjątku w drugi albo zwrócenie ich łańcucha.
         /// Wszystkie te konstruktory uruchamiają konstruktor bazowy przekazując mu
         /// parametry, ale mogą też mieć własną logikę.
@@ -56,5 +56,4 @@ namespace WalkaChomika.Models
         {
         }
     }
-
 }
