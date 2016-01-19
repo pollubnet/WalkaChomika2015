@@ -100,7 +100,7 @@ namespace WalkaChomika.Models
                     {
                         Debug.WriteLine(cel.Imię + " RIP!");
                         armia.Remove(cel);
-                    }
+                    }                    
                 }
             }
         }

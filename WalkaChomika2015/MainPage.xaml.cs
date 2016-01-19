@@ -51,16 +51,27 @@ namespace WalkaChomika
             // domyślny lub z parametrami. konstruktor może rzucić ArgumentOutOfRangeException
             // i z tego powodu obejmujemy to w blok try..catch i pokazujemy komunikat
             // w razie wyjątku
-            try
-            {
-                zwierze1 = new ArmiaChomików(100);
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                MessageDialog m = new MessageDialog("błąd, wyjątek! " + ex.Message);
-                m.ShowAsync();
-            }
+            //try
+            //{
+            //    zwierze1 = new ArmiaChomików(100);
+            //}
+            //catch (ArgumentOutOfRangeException ex)
+            //{
+            //    MessageDialog m = new MessageDialog("błąd, wyjątek! " + ex.Message);
+            //    m.ShowAsync();
+            //}
+
+            zwierze1 = new ChomikSzaman("Pucuś", 10);
             zwierze2 = new Jednorożec("Rafał", 5);
+
+            zwierze1.ZwierzęMartwe += OnZwierzeDead;
+            zwierze2.ZwierzęMartwe += OnZwierzeDead;
+        }
+
+        private void OnZwierzeDead(Zwierzę sender)
+        {
+            MessageDialog m = new MessageDialog("Padło nam :(\n" + sender.Imię);
+            m.ShowAsync();
         }
 
         /// <summary>

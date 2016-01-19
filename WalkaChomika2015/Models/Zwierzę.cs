@@ -20,10 +20,22 @@ using System;
 namespace WalkaChomika.Models
 {
     /// <summary>
+    /// Delegat, który określa jakie funkcje będą mogły
+    /// (jakiego typu) odbierać zdarzenie, o tym, że zwierzę umarło
+    /// </summary>
+    public delegate void ZwierzęMartweDelegate(Zwierzę sender);
+
+    /// <summary>
     /// Klasa Zwierzę, reprezentująca zwierzę bojowe
     /// </summary>
-    internal abstract class Zwierzę
+    public abstract class Zwierzę
     {
+        /// <summary>
+        /// Zdarzenie, że zwierzę jest martwe, które będziemy
+        /// mogli zasubskrybować.
+        /// </summary>
+        public event ZwierzęMartweDelegate ZwierzęMartwe;
+
         /// <summary>
         /// Konstruktor klasy zwierzę, nadający bazowe wartości jej parametrów
         /// </summary>
@@ -35,6 +47,8 @@ namespace WalkaChomika.Models
             this.Agility = 0;
 
             Licznik = Licznik + 1;
+
+            
         }
 
         /// <summary>
@@ -51,9 +65,24 @@ namespace WalkaChomika.Models
         public string Imię { get; set; }
 
         /// <summary>
+        /// Prywatny element punktów życia
+        /// </summary>        
+        private int _HP;
+
+        /// <summary>
         /// To pole jest liczbą, która reprezentuje ile zwierzę ma punktów życia
         /// </summary>
-        public virtual int HP { get; set; }
+        public virtual int HP
+        {
+            get { return _HP; }
+            set { _HP = value;
+                // jeśli próbujemy zmienić HP zwierzęcia,
+                // to spraw, czy ono jeszcze żyje i jeśli ktoś
+                // słucha czy żyje czy nie, to go poinformuj
+                if (!CzyŻyje() && (ZwierzęMartwe != null))
+                    ZwierzęMartwe.Invoke(this);
+                }
+        }
 
         /// <summary>
         /// To pole reprezentuje ilość many zwierzęcia
