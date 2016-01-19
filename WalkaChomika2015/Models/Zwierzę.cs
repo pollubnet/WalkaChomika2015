@@ -47,8 +47,6 @@ namespace WalkaChomika.Models
             this.Agility = 0;
 
             Licznik = Licznik + 1;
-
-            
         }
 
         /// <summary>
@@ -66,7 +64,7 @@ namespace WalkaChomika.Models
 
         /// <summary>
         /// Prywatny element punktów życia
-        /// </summary>        
+        /// </summary>
         private int _HP;
 
         /// <summary>
@@ -75,13 +73,15 @@ namespace WalkaChomika.Models
         public virtual int HP
         {
             get { return _HP; }
-            set { _HP = value;
+            set
+            {
+                _HP = value;
                 // jeśli próbujemy zmienić HP zwierzęcia,
                 // to spraw, czy ono jeszcze żyje i jeśli ktoś
                 // słucha czy żyje czy nie, to go poinformuj
                 if (!CzyŻyje() && (ZwierzęMartwe != null))
                     ZwierzęMartwe.Invoke(this);
-                }
+            }
         }
 
         /// <summary>
