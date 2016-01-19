@@ -100,7 +100,17 @@ namespace WalkaChomika.Models
                     {
                         Debug.WriteLine(cel.Imię + " RIP!");
                         armia.Remove(cel);
-                    }                    
+                    }
+
+                    // tutaj miało być również wywołanie zdarzenia, że zwierzę nie
+                    // żyje w postaci:
+                    // ZwierzęMartwe.Invoke(this)
+                    // ale nie możemy się odwołać do zdarzenia, a niezbyt wiedziałem
+                    // dlaczego wczoraj na wykładzie. Teraz już wiem: zdarzenia tworzone
+                    // w klasie bazowej są opatrywane słowem "private" wewnętrznie i klasy
+                    // potomne nie mogą po prostu uruchamiać zdarzeń klasy bazowej
+                    // da się to obejść, ale wymaga to minimum dodatkowego kombinowania
+                    // którego nie będziemy wprowadzać dla czytelności
                 }
             }
         }

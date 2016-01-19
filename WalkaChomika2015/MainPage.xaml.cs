@@ -64,6 +64,8 @@ namespace WalkaChomika
             zwierze1 = new ChomikSzaman("Pucuś", 10);
             zwierze2 = new Jednorożec("Rafał", 5);
 
+            // subskrybowanie zdarzenia, że zwierzę jest martwe i uruchamianie wtedy
+            // odpowiedniej funkcji
             zwierze1.ZwierzęMartwe += OnZwierzeDead;
             zwierze2.ZwierzęMartwe += OnZwierzeDead;
         }
